@@ -10,7 +10,15 @@ def zapisz():
     save_path = filedialog.asksaveasfilename(initialdir = "/", title = "Select file", filetypes = (("JPG","*.jpg"),("Wszystkie pliki","*.*")))
     save_path+=".jpg"
     obraz.save(save_path)
-
+    
+def skaluj():
+    global obraz
+    y=simpledialog.askinteger("Skalowanie", "Wprowadź wysokość", parent=root)
+    x=simpledialog.askinteger("Skalowanie", "Wprowadź szerokość", parent=root)
+    obraz = obraz.resize((x,y))
+    photo_space.image=ImageTk.PhotoImage(obraz)
+    photo_space.configure(image=photo_space.image)
+    
 root=Tk()
 root.title("Pythonshop")
 root.geometry("1200x600")
