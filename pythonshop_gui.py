@@ -11,6 +11,13 @@ def zapisz():
     save_path+=".jpg"
     obraz.save(save_path)
 
+def obrot():
+    global obraz
+    stopnie=simpledialog.askinteger("Obracanie", "Wprowadź liczbę stopni", parent=root)
+    obraz = obraz.rotate(stopnie)
+    photo_space.image=ImageTk.PhotoImage(obraz)
+    photo_space.configure(image=photo_space.image)  
+
 root=Tk()
 root.title("Pythonshop")
 root.geometry("1200x600")
@@ -28,7 +35,7 @@ photo_space=Label(root, width=1100, height=600)
 photo_space.grid(column=0, rowspan=6)
 
 sidebar=Frame(root, width=100).grid(column=1)
-obroc_sidebar=Button(sidebar, text="Obróć").grid(row=0, column=1, sticky="nesw")
+obroc_sidebar=Button(sidebar, text="Obróć", command=obrot).grid(row=0, column=1, sticky="nesw")
 skaluj_sidebar=Button(sidebar, text="Skaluj").grid(row=1, column=1, sticky="nesw")
 czarno_bialy_sidebar=Button(sidebar, text="Czarno-biały").grid(row=2, column=1, sticky="nesw")
 spacer_sidebar=Frame(sidebar, height=300).grid(row=3, column=1, sticky="nesw")
