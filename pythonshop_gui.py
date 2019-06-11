@@ -19,6 +19,12 @@ def skaluj():
     photo_space.image=ImageTk.PhotoImage(obraz)
     photo_space.configure(image=photo_space.image)
     
+def czarnobialy():
+    global obraz
+    obraz = obraz.convert("L")
+    photo_space.image=ImageTk.PhotoImage(obraz)
+    photo_space.configure(image=photo_space.image)
+    
 def obrot():
     global obraz
     stopnie=simpledialog.askinteger("Obracanie", "Wprowadź liczbę stopni", parent=root)
@@ -45,7 +51,7 @@ photo_space.grid(column=0, rowspan=6)
 sidebar=Frame(root, width=100).grid(column=1)
 obroc_sidebar=Button(sidebar, text="Obróć", command=obrot).grid(row=0, column=1, sticky="nesw")
 skaluj_sidebar=Button(sidebar, text="Skaluj", command=skaluj).grid(row=1, column=1, sticky="nesw")
-czarno_bialy_sidebar=Button(sidebar, text="Czarno-biały").grid(row=2, column=1, sticky="nesw")
+czarno_bialy_sidebar=Button(sidebar, text="Czarno-biały", command=czarnobialy).grid(row=2, column=1, sticky="nesw")
 spacer_sidebar=Frame(sidebar, height=300).grid(row=3, column=1, sticky="nesw")
 
 obraz_path=filedialog.askopenfilename(initialdir = "/", title = "Wybierz plik", filetypes = (("JPG","*.jpg"),("Wszystkie pliki","*.*")))
